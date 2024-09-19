@@ -14,7 +14,12 @@
       name: mysqld
       state: started
       enabled: yes
-
+  - name: install python mysql dependencies
+    ansible.builtin.pip:
+    name: 
+    - pyMySQL
+    - cryptography
+    executable: pip3.9
   - name: check db connection
     community.mysql.mysql_info:
       login_user: root
@@ -27,4 +32,3 @@
   - name: print output
     ansible.builtin.debug:
       msg: "output: {{mysql_connection_output}}"
-      
